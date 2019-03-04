@@ -11,7 +11,7 @@ Dicas para C++ e C:
 
 -Troque std::endl por "\n" no fim dos outputs  // melhora o tempo
 
--Se quiser melhorar o tempo de sua solução utilize <cstdio> no lugar de <iosream>, como entrada e saida padrão.
+-Se quiser melhorar o tempo de sua solução utilize &l;tcstdio&gt; no lugar de &lt;iostream&gt;, como entrada e saida padrão.
 
 -if (N & 1)  // verifica se um número é impar
 
