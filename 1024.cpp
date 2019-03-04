@@ -21,7 +21,7 @@ int main() {
       if ((*it >= 'A' && *it <= 'Z') | (*it >= 'a' && *it <= 'z'))  // no range?
         *it += 3;  // modifica o char
 
-    pMeio = &buffer[((++it - &buffer[0]) >> 1)];  // aponta p/ a metado da frase
+    pMeio = &buffer[((++it - &buffer[0]) >> 1)];  // aponta p/ a metade da frase
 
     for (it = &buffer[0]; it < pMeio; ++it)  // modifica o char até pMeio
       *it -= 1;  // modifica o char
