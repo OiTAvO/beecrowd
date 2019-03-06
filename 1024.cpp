@@ -5,10 +5,8 @@ using namespace std;
 
 int main() {
   int qtde;  // qtde de frases para criptografar
-  string txt, result;  // txt para simples reversão da frase, result para o fim
   char *pMeio, *it, *pMax;  // pMeio p/ meio da frase, it p/ iterar e pMax
   char buffer[1002], bfAux[1002];  // buffer para captura das frases e buffer aux
-
 
   scanf("%d", &qtde);  // qtde recebe input
   getchar();  // recebe o '\n' excluido do input
@@ -33,6 +31,5 @@ int main() {
     *it = '\0';  // fim da string
     printf("%s", bfAux);  // imprime string reversa
   }  // fim Enquanto
-
   return 0;
 }
