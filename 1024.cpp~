@@ -6,7 +6,7 @@ using namespace std;
 int main() {
   int qtde;  // qtde de frases para criptografar
   char *pMeio, *it, *pMax;  // pMeio p/ meio da frase, it p/ iterar e pMax
-  char buffer[1002], bfAux[1002];  // buffer p/ captura das frases e buffer aux
+  char buffer[1002], bfAux[1002];  // buffer para captura das frases e buffer aux
 
   scanf("%d", &qtde);  // qtde recebe input
   getchar();  // recebe o '\n' excluido do input
