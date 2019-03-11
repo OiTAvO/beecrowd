@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo 0.020s
+// OAMP - tempo 0.020s
 #include <cstdio>  // Para entrada e saída padrão
 #include <algorithm>  // Para usar o sort
 
