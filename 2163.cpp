@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo 0.052s 
+// OAMP - tempo 0.052s 
 #include <cstdio>  // Entrada e saída padrão
 #include <cstring>  // Utilizado p/ strtok
 #include <cstdlib>  // Utilizado p/ atoi
