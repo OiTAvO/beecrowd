@@ -1,4 +1,4 @@
-// Copyright OAMP  - tempo: 0.008s
+// OAMP  - tempo: 0.008s
 #include <cstdio>  // Utilzado para scanf, printf, getchar
 
 using namespace std;
