@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo 0.004s
+// OAMP - tempo 0.004s
 #include <cstdio>  // entrada e saída padrão
 #define D 'D'  // define a macro D
 #define E 'E'  // define a macro E
