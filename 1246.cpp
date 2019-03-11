@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo 0.024s
+// OAMP - tempo 0.024s
 #include <cstdio>  // entrada e saída padrão
 
 int main() {
