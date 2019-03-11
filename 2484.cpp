@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo 0.004s
+// OAMP - tempo 0.004s
 #include <iostream>  // entrada e saída padrão
 #include <string>  // uso de strings
 
