@@ -1,4 +1,4 @@
-// Copyright OAMP - tempo: 0.000s
+// OAMP - tempo: 0.000s
 #include <iostream>
 #include <cstdio>
 #include <string>
