@@ -20,7 +20,7 @@ int main() {
       vStr[i] = '\0';  // atribui '\0'
       cout << esp << vStr.c_str();  // imprime linha atualizada
     }  // fim for k
-    cout << "\n";  // fim enquanto
-  }
+    cout << "\n";  // imprime new line
+  }  // fim enquanto
   return 0;  // fim do programa
 }
