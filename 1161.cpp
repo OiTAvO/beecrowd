@@ -2,7 +2,7 @@
 #include <iostream>  // entrada e saída padrão
 
 using namespace std;
-using ull = unsigned long long;  // novo nome
+using ull = unsigned long long;  // novo nome p/ unsigned long long
 
 // funcção recusiva de cauda, valor passado p/ referência
 inline void fact(ull& val, int mult) { 
