@@ -7,10 +7,7 @@ using ull = unsigned long long;  // novo nome p/ unsigned long long
 // funcção recusiva de cauda, valor passado p/ referência
 inline void fact(ull& val, int mult) { 
     if (val < 2) val = 1;  // menor que 2? retorna 1
-    if (mult > 1) {  // maior que 1?
-        val *= mult;  // atualiza valor p/ passar p/ referência
-        fact(val, mult - 1);  // chama func. com novos valores
-    }  // fim do if
+    if (mult > 1) fact(val *= mult, mult - 1);  // chama func. com novos valores
 }  // fim da função
 
 int main() {
