@@ -4,7 +4,7 @@
 using namespace std;
 using ull = unsigned long long;  // novo nome p/ unsigned long long
 
-// funcção recusiva de cauda, valor passado p/ referência
+// função recusiva de cauda, valor passado p/ referência
 inline void fact(ull& val, int mult) { 
     if (val < 2) val = 1;  // menor que 2? retorna 1
     if (mult > 1) fact(val *= mult, mult - 1);  // chama func. com novos valores
