@@ -1,4 +1,4 @@
-// OAMP - tempo 0.308s
+// OAMP - tempo 0.288s
 #include <cstdio>  // entrada e saída padrãp
 
 int main() {
