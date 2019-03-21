@@ -1,3 +1,4 @@
+// OAMP - tempo 0.008s
 #include <cstdio>  // entrada e saída padrão
 
 int dx[4] = {-1, 0, 1, 0};  // incremento p/ x
