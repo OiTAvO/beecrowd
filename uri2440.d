@@ -4,7 +4,7 @@ import std.algorithm;
 
 /**
  * Programa que calcula a quantidade
- * de familias em un determinado grupo
+ * de familias em um determinado grupo
  * Authors: OiTAvO
  * Date: May 17, 2019
 */
@@ -12,33 +12,34 @@ import std.algorithm;
 void main()
 {
 	static int[50001] people;
-	static int[][50001] coins;
+	static int[][50001] inscriptions;
 	static int[] family;
-	int n, m, head, tail, counter, person;
+	int nPeople, mInscriptions,
+		head, tail, familyCount, person;
 
-	readf(" %s %s", &n, &m);
-	while (m--)
+	readf(" %s %s", &nPeople, &mInscriptions);
+	while (mInscriptions--)
 	{
 		readf(" %s %s", &head, &tail);
-		coins[head] ~= tail;
-		coins[tail] ~= head;
+		inscriptions[head] ~= tail;
+		inscriptions[tail] ~= head;
 	}
 
-	for (int i = 1; i <= n; ++i)
+	for (int i = 1; i <= nPeople; ++i)
 	{
 		if(!people[i])
 		{
 			family ~= i ;
-			++counter;
+			++familyCount;
 			while (!family.empty())
 			{
 				person = family[0];
 				family = family[1 .. $];
-				foreach (p; coins[person])
+				foreach (p; inscriptions[person])
 					if (!people[p]++)
 						family ~= p;
 			}
 		}
 	}
-	writeln(counter);
+	writeln(familyCount);
 }
