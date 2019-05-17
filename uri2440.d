@@ -15,14 +15,14 @@ void main()
 	static int[][50001] inscriptions;
 	static int[] family;
 	int nPeople, mInscriptions,
-		head, tail, familyCount, person;
+		p1st, p2nd, familyCount, person;
 
 	readf(" %s %s", &nPeople, &mInscriptions);
 	while (mInscriptions--)
 	{
-		readf(" %s %s", &head, &tail);
-		inscriptions[head] ~= tail;
-		inscriptions[tail] ~= head;
+		readf(" %s %s", &p1st, &p2nd);
+		inscriptions[p1st] ~= p2nd;
+		inscriptions[p2nd] ~= p1st;
 	}
 
 	for (int i = 1; i <= nPeople; ++i)
@@ -35,9 +35,9 @@ void main()
 			{
 				person = family[0];
 				family = family[1 .. $];
-				foreach (p; inscriptions[person])
-					if (!people[p]++)
-						family ~= p;
+				foreach (ref relative; inscriptions[person])
+					if (!people[relative]++)
+						family ~= relative;
 			}
 		}
 	}
