@@ -1,4 +1,12 @@
-// OAMP - tempo 0.000s
+﻿/* 
+    author: OiTAvO 
+    problem_name: cedulas
+    problem_number: 1018
+    category: iniciante
+    difficulty_level: 5
+    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1018
+*/ 
+
 #include <iostream>  // entrada e saída padrão
 
 using namespace std;

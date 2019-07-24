@@ -1,4 +1,12 @@
-// OAMP - tempo 0.000s
+﻿/* 
+    author: OiTAvO 
+    problem_name: area_do_circulo
+    problem_number: 1002
+    category: iniciante
+    difficulty_level: 5
+    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1002
+*/ 
+
 #include <iostream>  // entrada e saída padrão
 #include <iomanip>  // usado p/ fixed, setprecision
 #define PI  3.14159  // valor de PI

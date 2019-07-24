@@ -1,4 +1,12 @@
-// OAMP  - tempo: 0.008s
+﻿/* 
+    author: OiTAvO 
+    problem_name: criptogradia
+    problem_number: 1024
+    category: string
+    difficulty_level: 6
+    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1024
+*/ 
+
 #include <cstdio>  // Utilzado para scanf, printf, getchar
 
 using namespace std;
