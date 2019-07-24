@@ -1,12 +1,18 @@
-// OAMP - tempo: 0.000s
-#include <iostream>
-#include <cstdio>
-#include <string>
+﻿/*
+	author: OiTAvO
+	problem_name: revisao_de_contrato
+	problem_number: 1120
+	category: strings
+	difficulty_level: 5
+	link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1120
+*/
+
+#include <bits/stdc++.h>
 
 using namespace std;
 
 inline bool flagCh(char ch) {  // verific se o char é nulo ou '0'
-  return (ch == '0' | ch == NULL) ? true : false;
+  return (ch == '0' | ch == NULL);
 }
 
 int main() {

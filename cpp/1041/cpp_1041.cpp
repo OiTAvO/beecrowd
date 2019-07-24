@@ -1,4 +1,12 @@
-// OAMP - tempo 0.000s
+﻿/* 
+    author: OiTAvO 
+    problem_name: coordenadas_de_um_ponto
+    problem_number: 1041
+    category: iniciante
+    difficulty_level: 4
+    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1041
+*/ 
+
 #include <iostream>  // entrada e saída padrçao
 
 using namespace std;

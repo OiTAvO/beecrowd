@@ -1,3 +1,12 @@
+{--
+	author: OiTAvO
+	problem_name: crescimento_populacional
+	problem_number: 1160
+	category: iniciante
+	difficulty_level: 4
+	link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1160
+--}
+
 import Control.Monad
 
 paraDouble x = (read x :: Double)

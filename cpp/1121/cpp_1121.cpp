@@ -1,4 +1,12 @@
-// OAMP - tempo 0.008s
+﻿/*
+	author: OiTAvO
+	problem_name: robo_colecionador
+	problem_number: 1121
+	category: ad-hoc
+	difficulty_level: 4
+	link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1121
+*/
+
 #include <cstdio>  // entrada e saída padrão
 
 int dx[4] = {-1, 0, 1, 0};  // incremento p/ x

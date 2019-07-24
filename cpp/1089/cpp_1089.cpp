@@ -1,9 +1,17 @@
-// OAMP - tempo 0.004s
-#include <cstdio>  // entrada e sa√≠da padr√£o
+/*
+	author: OiTAvO
+	problem_name: loop_musical
+	problem_number: 1089
+	category: ad-hoc
+	difficulty_level: 3
+	link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1089
+*/
+
+#include <cstdio>  // entrada e saÌda padr„o
 
 int main () {
-    bool flg;  // flg para inflex√£o
-    int n, i, picos, v[10001];  // variaveis da solu√ß√£o
+    bool flg;  // flg para inflex„o (sentido do pico)
+    int n, i, picos, v[10001];  // variaveis da soluÁ„o
     char bff[7000], *ptr = &bff[0];  // buffer p/ resultado
     
     while (scanf("%d", &n) && n) {  // entrada para qtde de valores
@@ -12,9 +20,9 @@ int main () {
 
         flg = (v[n - 1] < v[0]);  // atribui resultado da expr p/ flg
         for(picos = i = 0; i < n; ++i)  // loop p/ todos os valores
-            if ((v[i] < v[(i + 1) % n]) != flg) {  // h√° uma inflex√£o
+            if ((v[i] < v[(i + 1) % n]) != flg) {  // È uma inflex„o?
                 ++picos;  // acresce 1 ao contador de picos
-                flg = !flg;  // inverte flg (sentido do pico)
+                flg = !flg;  // inverte flg
             }
         ptr += sprintf(ptr, "%d\n", picos);  // concatena resp. no buffer
     }
