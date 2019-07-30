@@ -1,8 +1,8 @@
 @ECHO OFF
 CLS
-SET /P prob=Digite o numero do problema:
-SET /P lang=Digite qual linguagem:
-SET /P qtd=Digite quantidade de testes(ao menos 1):
+IF "%1"=="" (SET /P prob=Digite o numero do problema:) ELSE SET prob=%1
+IF "%2"=="" (SET /P lang=Digite qual linguagem:) ELSE SET lang=%2
+IF "%3"=="" (SET /P qtd=Digite quantidade de testes(ao menos 1^):) ELSE SET qtd=%3
 SET ext=cpp
 
 CALL :LowerCase lang
