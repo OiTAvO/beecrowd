@@ -1,9 +1,9 @@
 {-- 
     author: OiTAvO 
-    problem_name:  
+    problem_name: numero_primo
     problem_number: 1165 
-    category:  
-    difficulty_level:  
+    category: iniciante
+    difficulty_level: 2
     link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1165 
 --} 
  
