@@ -93,7 +93,7 @@ e.g. python source code doc
 *note:* If you use urisln script, the pre-generated source code will contains the items described above, just fill the gaps.
 
 * Running your solution - RUNSLN
-The aim of runsln script are run your solution, with the entries insided the ".\in" folder, and compare the outputs generated in ".\out" folder with the correct answers within the ".\answer" folder.
+The aim of runsln script are run your solution, with the entries insided the "in" folder, and compare the outputs generated in "out" folder with the correct answers within the "answer" folder.
 
 When you run the runsln script, it shows the result of comparing the output generated with the correct answer for each test case.
 
