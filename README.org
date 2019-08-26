@@ -13,7 +13,7 @@ The problems in this repositories are solved mainly in four programming language
   *note:* To test your solutions you will need a compiler or an interpreter depending on the language you choose.
 
 * Folder Structure
-This repository has the following folder structure:
+Solution repositories have the following structure:
 - /e.g. cpp solution/
   #+begin_src
     __cpp
