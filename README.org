@@ -1,0 +1,101 @@
+* Preamble
+This README was inspired in this [[https://github.com/JVZELLER/programming-contest/blob/master/README.md][file]].
+
+Thanks to [[https://github.com/JVZELLER][@JVZELLER]]
+
+* Languages
+The problems in this repositories are solved mainly in four programming languages:
+  - cpp
+  - d (it's not possible submit solutions in this language in [[https://www.urionlinejudge.com.br/judge/pt/faqs/about/examples][URI Online Judge]])
+  - haskell
+  - python3
+  
+  *note:* To test your solutions you will need a compiler or an interpreter depending on the language you choose.
+
+* Folder Structure
+This repository has the following folder structure:
+- /e.g. cpp solution/
+  #+begin_src
+    __cpp
+      |__"problem_number"
+        |__answer (folder for correct test case answers)
+        |__in (folder for test case entries)
+        |__out (folder for your solution outputs)
+  #+end_src
+
+* Automated folder structure - URISLN
+The aim of urisln script is automate the creation of the folder structure above.
+
+The urisln script accepts arguments.
+
+You can run it as follows:
+#+begin_src
+  C:\> urisln.cmd "problem_number" "language" "number_of_test_cases(at least 1)"  
+#+end_src
+or
+#+begin_src
+  C:\> urisln.cmd
+#+end_src
+And then answer the following questions:
+#+begin_src
+  C:\> urisln.cmd
+  Digite o numero do problema: "problem_number"
+  Digite qual linguagem: "language"
+  Digite quantidade de testes(ao menos 1): "number_of_test_cases(at least 1)"
+#+end_src
+
+In addition to creating the folder structure described above, the following files will be created:
+- e.g. cpp solution:
+  #+begin_src
+    __cpp
+      |__"problem_number"
+        |__answer (folder for correct test case answers)
+          "problem_number"_1 (empty file for test case 1 asnwer)
+          ...
+        |__in (folder for test case entries)
+          "problem_number"_1 (empty file for test case 1 inputs)
+          ...
+        |__out (folder for your solution outputs)
+        cpp_"problem_number".cpp 
+        runsln.cmd/runsln.sh (script to run your solution on all test cases located in the ".\in" folder)
+  #+end_src
+
+** Languages - URISLN
+The accepted languages for urisln script are, for now, the following:
+  - cpp
+  - d
+  - python
+  - haskell
+  
+*note:* type the name of language chosen strictly equal as described above.
+
+* Problem source code
+All problem files must contain in it's doc these items:
+  1. Author (Name of the person whos develop the solution)
+  2. Problem Name
+  3. Problem Number
+  4. Category
+  5. Difficulty Level
+  6. Link (if it's hosted in an web site)
+  
+e.g. python source code doc
+#+begin_src python
+''' 
+    author: OiTAvO 
+    problem_name: ho_ho_ho
+    problem_number: 1759 
+    category: iniciante
+    difficulty_level: 3
+    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1759 
+''' 
+#+end_src
+  
+*note:* If you use urisln script, the pre-generated source code will contains the items described above, just fill the gaps.
+
+* Running your solution - RUNSLN
+The aim of runsln script are run your solution, with the entries insided the ".\in" folder, and compare the outputs generated in ".\out" folder with the correct answers within the ".\answer" folder.
+
+When you run the runsln script, it shows the result of comparing the output generated with the correct answer for each test case.
+
+*Note*: Only the urisln script for the Windows platform is working.
+The linux version is still under development.
