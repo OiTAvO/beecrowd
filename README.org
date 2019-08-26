@@ -3,6 +3,14 @@ This README was inspired by this [[https://github.com/JVZELLER/programming-conte
 
 Thanks to [[https://github.com/JVZELLER][@JVZELLER]]
 
+** Table of Contents  :TOC:
+  - [[#languages][Languages]]
+  - [[#folder-structure][Folder Structure]]
+  - [[#automated-folder-structure---urisln][Automated folder structure - URISLN]]
+    - [[#languages---urisln][Languages - URISLN]]
+  - [[#problem-source-code][Problem source code]]
+  - [[#running-your-solution---runsln][Running your solution - RUNSLN]]
+
 * Languages
 The problems in this repositories are solved mainly in four programming languages:
   - cpp
