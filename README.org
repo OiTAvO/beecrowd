@@ -86,17 +86,17 @@ All problem files must contain in it's doc these items:
   5. Difficulty Level
   6. Link (if it's hosted in an web site)
   
-e.g. python source code doc
-#+begin_src python
-''' 
-    author: OiTAvO 
-    problem_name: ho_ho_ho
-    problem_number: 1759 
-    category: iniciante
-    difficulty_level: 3
-    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1759 
-''' 
-#+end_src
+  - e.g. python source code doc
+    #+begin_src python
+    ''' 
+        author: OiTAvO 
+        problem_name: ho_ho_ho
+        problem_number: 1759 
+        category: iniciante
+        difficulty_level: 3
+        link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1759 
+    ''' 
+    #+end_src
   
 *note:* If you use urisln script, the pre-generated source code will contains the items described above, just fill the gaps.
 
