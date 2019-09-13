@@ -58,7 +58,7 @@ In addition to creating the folder structure described above, the following file
     __cpp
       |__"problem_number"
         |__answer (folder for correct test case answers)
-          "problem_number"_1 (empty file for test case 1 asnwer)
+          "problem_number"_1 (empty file for test case 1 answer)
           ...
         |__in (folder for test case entries)
           "problem_number"_1 (empty file for test case 1 inputs)
