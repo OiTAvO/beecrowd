@@ -12,8 +12,7 @@
 using namespace std;
 
 int main() {
-    int n, soma;
-    static int vi[100000];
+    int n, soma, vi[100000];
     
     scanf("%d", &n);
     
@@ -22,10 +21,9 @@ int main() {
 
     scanf("%d", &soma);
    
-    for(int i = 0;;++i) {
+    for(int i = 0;;++i)
         if (binary_search(vi + i, vi + n, soma - vi[i])) {
             printf("%d %d\n", vi[i], soma - vi[i]);
             return 0;
         }
-    }
 }
