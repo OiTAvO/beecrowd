@@ -23,7 +23,7 @@ int main() {
     scanf("%d", &soma);
    
     for(int i = 0;;++i) {
-        if (binary_search(vi + i + 1, vi + n, soma - vi[i])) {
+        if (binary_search(vi + i, vi + n, soma - vi[i])) {
             printf("%d %d\n", vi[i], soma - vi[i]);
             return 0;
         }
