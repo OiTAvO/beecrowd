@@ -38,12 +38,12 @@ PAUSE
 GOTO:EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::MAIN::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 :LowerCase
 :: Subroutine to convert a variable VALUE to all lower case.
 :: The argument for this subroutine is the variable NAME.
 FOR %%i IN ("A=a" "B=b" "C=c" "D=d" "E=e" "F=f" "G=g" "H=h" "I=i" "J=j" "K=k" "L=l" "M=m" "N=n" "O=o" "P=p" "Q=q" "R=r" "S=s" "T=t" "U=u" "V=v" "W=w" "X=x" "Y=y" "Z=z") DO CALL SET "%1=%%%1:%%~i%%"
 GOTO:EOF
+
 
 :LangExt
 :: Subroutine to get file extension.
@@ -53,21 +53,41 @@ IF %~1==cpp (SET %~2%=cpp)
 IF %~1==haskell (SET %~2%=hs)
 GOTO:EOF
 
-:CppFile
-:: Subroutine to generate init file for cpp
-   FOR /f %%i IN ('git config user.name') DO SET username=%%i
 
-   ECHO /* > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+:SlnDoc
+:: Subroutine to generate Solution doc
+   FOR /f %%i IN ('git config user.name') DO SET username=%%i
    ECHO.    author: %username% >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    problem_name:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    problem_number: %~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    category:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    difficulty_level:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+GOTO:EOF
+
+
+:RunSLn
+:: Subroutine to generate runsln.cmd
+   ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"
+   IF NOT "%COMMAND%"=="" ECHO %COMMAND% >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO     %EXEORSCRIPT% ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
+   ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO ECHO FIM DOS TESTES. >> ".\%lang%\%prob%\runsln.cmd"
+   ECHO PAUSE >> ".\%lang%\%prob%\runsln.cmd"
+GOTO:EOF
+
+
+:CppFile
+:: Subroutine to generate init file for cpp
+   ECHO /* > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   CALL :SlnDoc %lang%, %prob%
    ECHO */ >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
-   :: main function for cpp or d
+   :: main function for cpp
    ECHO #include^<iostream^> >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO using namespace std; >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
@@ -79,32 +99,20 @@ GOTO:EOF
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
    :: generate runsln for cpp
-   ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"
-   ECHO g++ -std=c++11 -O2 ".\%ext%_%prob%.%ext%" -o ".\%ext%_%prob%.exe" >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ".\%ext%_%prob%.exe" ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
-   ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ECHO FIM DOS TESTES. >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO PAUSE >> ".\%lang%\%prob%\runsln.cmd"
+   Set COMMAND=g++ -std=c++11 -O2 ".\%ext%_%prob%.%ext%" -o ".\%ext%_%prob%.exe"
+   Set EXEORSCRIPT=.\%ext%_%prob%.exe
+   CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%, %COMMAND%
 GOTO:EOF
 
 
 :DFile
 :: Subroutine to generate init file for d
-   FOR /f %%i IN ('git config user.name') DO SET username=%%i
-
    ECHO /* > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    author: %username% >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_name:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_number: %~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    category:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    difficulty_level:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   CALL :SlnDoc %lang%, %prob%
    ECHO */ >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
+   :: main function for d
    ECHO import std.stdio; >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO void main(^) >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
@@ -114,67 +122,39 @@ GOTO:EOF
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
    :: generate runsln for d
-   ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"      
-   ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     rdmd ".\%ext%_%prob%.%ext%" ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
-   ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ECHO FIM DOS TESTES. >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO PAUSE >> ".\%lang%\%prob%\runsln.cmd"
+   Set EXEORSCRIPT=rdmd %ext%_%prob%.%ext%
+   CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%
 GOTO:EOF
+
 
 :PyFile
 :: Subroutine to generate init file for python
-   FOR /f %%i IN ('git config user.name') DO SET username=%%i
-
    ECHO ''' > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    author: %username% >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_name:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_number: %~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    category:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    difficulty_level:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   CALL :SlnDoc %lang%, %prob%
    ECHO ''' >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+
+   :: main python
    ECHO print("Ola Mundo") >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
    :: generate runsln for python
-   ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"   
-   ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     python ".\%ext%_%prob%.%ext%" ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
-   ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ECHO FIM DOS TESTES. >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO PAUSE >> ".\%lang%\%prob%\runsln.cmd"
+   Set EXEORSCRIPT=python %ext%_%prob%.%ext%
+   CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%
 GOTO:EOF
+
 
 :HsFile
 :: Subroutine to generate init file for haskell
-   FOR /f %%i IN ('git config user.name') DO SET username=%%i
-
    ECHO {-- > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    author: %username% >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_name:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    problem_number: %~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    category:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    difficulty_level:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   CALL :SlnDoc %lang%, %prob%
    ECHO --} >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+
+   :: main function for haskell
    ECHO main = putStrLn "Ola Mundo" >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 
    :: generate runsln for haskell
-   ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"   
-   ECHO ghc -O ".\%ext%_%prob%.%ext%" >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ERASE ".\%ext%_%prob%.hi" >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ERASE ".\%ext%_%prob%.o" >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ".\%ext%_%prob%.exe" ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
-   ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO ECHO FIM DOS TESTES. >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO PAUSE >> ".\%lang%\%prob%\runsln.cmd"
+   Set COMMAND=ghc -O -no-keep-hi-files -no-keep-o-files "%ext%_%prob%.%ext%"
+   Set EXEORSCRIPT=.\%ext%_%prob%.exe
+   CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%, %COMMAND%
 GOTO:EOF
