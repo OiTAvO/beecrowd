@@ -7,11 +7,8 @@ function toLower () {
 function langExt() {
    case $1 in
        cpp) echo cpp ;;
-
        d) echo d ;;
-
        python) echo py ;;
-
        haskell) echo hs ;;
     esac
 }
@@ -34,26 +31,21 @@ function main() {
     do
         case "$opt" in
           p ) prob="$OPTARG" ;;
-
           l ) lang="$OPTARG" ;;
-
           q ) qtd="$OPTARG" ;;
         esac
     done
 
     if [ -z "$prob" ]; then
-        echo "Digite o numero do problema: "
-        read prob
+        echo "Digite o numero do problema: "; read prob
     fi
 
     if [ -z "$lang" ]; then
-        echo "Digite qual linguagem: "
-        read lang
+        echo "Digite qual linguagem: "; read lang
     fi
 
     if [ -z "$qtd" ]; then
-        echo "Digite a quantidade de teste(ao menos 1): "
-        read qtd
+        echo "Digite a quantidade de teste(ao menos 1): "; read qtd
     fi
 
 
