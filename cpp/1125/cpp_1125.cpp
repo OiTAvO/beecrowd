@@ -21,12 +21,6 @@ struct Piloto {
   bool operator==(const int& _pts) {return pts == _pts;}
 };
 
-Piloto* setPilots(int N) {
-  auto pilots = new Piloto[N];
-  iota(pilots, pilots + N, 1);
-  return pilots;
-}
-
 int main() {
   int g, p, s, k, i, j;
 
@@ -50,7 +44,8 @@ int main() {
     }
 
     for (auto& ponto : pontos) {
-      auto pilotos = setPilots(p + 1);
+      Piloto pilotos[100];
+      iota(pilotos, pilotos + p, 1);
       for (auto& gp : gps)
         for (i = 0; i < gp.size(); ++i)
           pilotos[i].pts += ponto[gp[i] - 1];
