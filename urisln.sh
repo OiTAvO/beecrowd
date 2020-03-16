@@ -15,6 +15,10 @@ function langExt() {
 
 function slnDoc() {
     src="./$lang/$prob/$1_$prob.$1"
+    if [ -f "$src" ]; then
+	rm "$src"
+    fi
+    
     username=`git config user.name`
     echo -e "$(iniDoc $1)" >> "$src"
     echo -e "    author: $usename" >> "$src"
@@ -57,13 +61,17 @@ function exeorscript() {
     case $1 in
 	py ) echo 'python3 ./'$ext'_'$prob.$ext ;;
 	cpp ) echo './'$ext'_'$prob ;;
-	d ) echo 'rdmd ./'$$ext'_'$prob.$ext ;;
+	d ) echo 'rdmd ./'$ext'_'$prob.$ext ;;
 	hs ) echo './'$ext'_'$prob ;;
     esac        
 }
 
 function runsln() {
     src="./$lang/$prob/runsln.sh"
+    if [ -f "$src" ]; then
+	rm "$src"
+    fi
+    
     if [ -n "$(command $1)" ]; then
 	echo -e "$(command $1)" >> "$src"
     fi
@@ -99,8 +107,19 @@ function main() {
     mkdir -p "./$lang/$prob/out"
 
     for q in $(seq 1 $qtd); do
-	touch "./$lang/$prob/answer/$prob_$q"
-	touch "./$lang/$prob/in/$prob_$q"	
+	ans_file="./$lang/$prob/answer/$prob_$q"
+	if [ -f "$ans_file" ]; then
+	    rm "$ans_file"
+	else
+	    touch "$ans_file"
+	fi
+	
+	in_file="./$lang/$prob/in/$prob_$q"
+	if [ -f "$in_file" ]; then
+	    rm "$in_file"
+	else
+	    touch "$in_file"
+	fi
     done
     
     ext=$(langExt $lang)
