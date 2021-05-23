@@ -7,18 +7,20 @@
     link: https://www.urionlinejudge.com.br/judge/pt/problems/view/1437 
 ''' 
 
-direcao = ['N', 'L', 'S', 'O'] 
+from sys import stdin
 
-while True:
-    N = int(input()) 
-    if N == 0:
-        break
-    
-    D = 0
-    for i in input():
-        if i == 'D':
-            D += 1
-        else:
-            D += 3
+direcao = ['N', 'L', 'S', 'O']
+
+def main():
+    out = []
+    comandos = [line.strip() for line in stdin]
+
+    for comando in comandos[1::2]:
+        Direitas = comando.count('D')
+        Esquerdas = len(comando) - Direitas
         
-    print(direcao[D % 4])
+        out.append(direcao[(3 * Esquerdas + Direitas) % 4])
+    print(*out, sep='\n')
+    
+if __name__ == '__main__':
+    main()
