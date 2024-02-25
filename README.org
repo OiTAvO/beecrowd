@@ -6,15 +6,15 @@ Thanks to [[https://github.com/JVZELLER][@JVZELLER]]
 ** Table of Contents  :TOC:
   - [[#languages][Languages]]
   - [[#folder-structure][Folder Structure]]
-  - [[#automated-folder-structure---urisln][Automated folder structure - URISLN]]
-    - [[#languages---urisln][Languages - URISLN]]
+  - [[#automated-folder-structure---sln][Automated folder structure - SLN]]
+    - [[#languages---sln][Languages - SLN]]
   - [[#problem-source-code][Problem source code]]
   - [[#running-your-solution---runsln][Running your solution - RUNSLN]]
 
 * Languages
 The problems in this repositories are solved mainly in four programming languages:
   - cpp
-  - d (it's not possible submit solutions in this language in [[https://www.urionlinejudge.com.br/judge/pt/faqs/about/examples][URI Online Judge]])
+  - d (it's not possible submit solutions in this language in [[https://judge.beecrowd.com/pt/faqs/about/examples][beecrowd]])
   - haskell
   - python3
   
@@ -31,22 +31,22 @@ Solution repositories have the following structure:
         |__out (folder for your solution outputs)
   #+end_src
 
-* Automated folder structure - URISLN
-The aim of urisln script is automate the creation of the folder structure above.
+* Automated folder structure - SLN
+The aim of sln script is automate the creation of the folder structure above.
 
-The urisln script accepts arguments.
+The sln script accepts arguments.
 
 You can run it as follows:
 #+begin_src
-  C:\> urisln.cmd "problem_number" "language" "number_of_test_cases(at least 1)"  
+  C:\> sln.cmd "problem_number" "language" "number_of_test_cases(at least 1)"  
 #+end_src
 or
 #+begin_src
-  C:\> urisln.cmd
+  C:\> sln.cmd
 #+end_src
 And then answer the following questions:
 #+begin_src
-  C:\> urisln.cmd
+  C:\> sln.cmd
   Digite o numero do problema: "problem_number"
   Digite qual linguagem: "language"
   Digite quantidade de testes(ao menos 1): "number_of_test_cases(at least 1)"
@@ -68,8 +68,8 @@ In addition to creating the folder structure described above, the following file
         runsln.cmd/runsln.sh (script to run your solution on all test cases located in the ".\in" folder)
   #+end_src
 
-** Languages - URISLN
-The accepted languages for urisln script are, for now, the following:
+** Languages - SLN
+The accepted languages for sln script are, for now, the following:
   - cpp
   - d
   - python
@@ -98,12 +98,12 @@ All problem files must contain in it's doc these items:
     ''' 
     #+end_src
   
-*note:* If you use urisln script, the pre-generated source code will contains the items described above, just fill the gaps.
+*note:* If you use sln script, the pre-generated source code will contains the items described above, just fill the gaps.
 
 * Running your solution - RUNSLN
 The aim of runsln script are run your solution, with the entries insided the "in" folder, and compare the outputs generated in "out" folder with the correct answers within the "answer" folder.
 
 When you run the runsln script, it shows the result of comparing the output generated with the correct answer for each test case.
 
-*Note*: Only the urisln script for the Windows platform is working.
+*Note*: Only the sln script for the Windows platform is working.
 The linux version is still under development.
