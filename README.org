@@ -17,7 +17,7 @@ The problems in this repositories are solved mainly in four programming language
   - d (it's not possible submit solutions in this language in [[https://judge.beecrowd.com/pt/faqs/about/examples][beecrowd]])
   - haskell
   - python3
-  - clojure *future*
+  - clojure *comming soon*
   
   *note:* To test your solutions you will need a compiler or an interpreter depending on the language you choose.
 
