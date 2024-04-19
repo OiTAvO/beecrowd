@@ -30,6 +30,7 @@ IF EXIST ".\%lang%\%prob%\%ext%_%prob%.%ext%" (ECHO "%ext%_%prob%.%ext% ja exist
    IF %lang%==d CALL :DFile %lang%, %prob% ELSE ()
    IF %lang%==python CALL :PyFile %lang%, %prob% ELSE ()
    IF %lang%==haskell CALL :HsFile %lang%, %prob% ELSE ()
+   IF %lang%==clojure CALL :CljFile %lang%, %prob% ELSE ()
    ECHO O arquivo ".\%lang%\%prob%\%ext%_%prob%.%ext%" foi criado
 )
 
@@ -51,6 +52,7 @@ IF %~1==python (SET %~2%=py)
 IF %~1==d (SET %~2%=d)
 IF %~1==cpp (SET %~2%=cpp)
 IF %~1==haskell (SET %~2%=hs)
+IF %~1==clojure (SET %~2%=clj)
 GOTO:EOF
 
 
@@ -62,7 +64,7 @@ GOTO:EOF
    ECHO.    problem_number: %~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    category:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
    ECHO.    difficulty_level:  >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
-   ECHO.    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   ECHO.    link: https://judge.beecrowd.com/pt/problems/view/%~2 >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
 GOTO:EOF
 
 
@@ -71,7 +73,7 @@ GOTO:EOF
    ECHO @ECHO OFF > ".\%lang%\%prob%\runsln.cmd"
    IF NOT "%COMMAND%"=="" ECHO %COMMAND% >> ".\%lang%\%prob%\runsln.cmd"
    ECHO FOR /F %%%%i IN ('DIR ".\in" /B') DO (^ >> ".\%lang%\%prob%\runsln.cmd"
-   ECHO     %EXEORSCRIPT% ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"   
+   ECHO     %EXEORSCRIPT% ^< ".\in\"%%%%i ^> ".\out\"%%%%i >> ".\%lang%\%prob%\runsln.cmd"
    ECHO     FC /N ".\out\"%%%%i ".\answer\"%%%%i^^ >> ".\%lang%\%prob%\runsln.cmd"
    ECHO     ECHO Proximo...^^ >> ".\%lang%\%prob%\runsln.cmd"
    ECHO     PAUSE^) >> ".\%lang%\%prob%\runsln.cmd"
@@ -156,5 +158,20 @@ GOTO:EOF
    :: generate runsln for haskell
    Set COMMAND=ghc -O -no-keep-hi-files -no-keep-o-files "%ext%_%prob%.%ext%"
    Set EXEORSCRIPT=.\%ext%_%prob%.exe
+   CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%, %COMMAND%
+GOTO:EOF
+
+:CljFile
+:: Subroutine to generate init file for clojure
+   ECHO '"' > ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   CALL :SlnDoc %lang%, %prob%
+   ECHO '"' >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+   ECHO. >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+
+   :: main function for clojure
+   ECHO main = (println "Ola Mundo") >> ".\%lang%\%prob%\%ext%_%prob%.%ext%"
+
+   :: generate runsln for clojure
+   Set EXEORSCRIPT=clj -M %ext%_%prob%.%ext%
    CALL :RunSln %lang%, %prob%, %EXEORSCRIPT%, %COMMAND%
 GOTO:EOF

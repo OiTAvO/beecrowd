@@ -10,6 +10,7 @@ function langExt() {
        d) echo d ;;
        python) echo py ;;
        haskell) echo hs ;;
+       clojure) echo clj ;;
     esac
 }
 
@@ -21,12 +22,12 @@ function slnDoc() {
     
     username=`git config user.name`
     echo -e "$(iniDoc $1)" >> "$src"
-    echo -e "    author: $usename" >> "$src"
+    echo -e "    author: $(git config user.name)" >> "$src"
     echo -e "    problem_name: " >> "$src"
     echo -e "    problem_number: $prob" >> "$src"
     echo -e "    category: " >> "$src"
     echo -e "    difficulty_level: " >> "$src"
-    echo -e "    link: https://www.urionlinejudge.com.br/judge/pt/problems/view/$prob" >> "$src"
+    echo -e "    link: https://judge.beecrowd.com/pt/problems/view/$prob" >> "$src"
     echo -e "$(endDoc $1)\n" >> "$src"
 }
 
@@ -36,6 +37,7 @@ function iniDoc() {
 	cpp ) echo '/*' ;;
 	d ) echo '/*' ;;
 	hs ) echo '{--' ;;
+	clj ) echo '"' ;;
     esac
 }
 
@@ -45,6 +47,7 @@ function endDoc() {
 	cpp ) echo '*/' ;;
 	d ) echo '*/' ;;
 	hs ) echo '--}' ;;
+	clj ) echo '"'
     esac
 }
 
@@ -54,6 +57,7 @@ function command() {
 	cpp ) echo 'g++ -std=c++11 -O2 ./'$ext'_'$prob.$ext -o ./$ext'_'$prob ;;
 	d ) echo '' ;;
 	hs ) echo 'ghc -O -no-keep-hi-files -no-keep-o-files '$ext'_'$prob ;;
+	clj ) echo '' ;;
     esac    
 }
 
@@ -63,6 +67,7 @@ function exeorscript() {
 	cpp ) echo './'$ext'_'$prob ;;
 	d ) echo 'rdmd ./'$ext'_'$prob.$ext ;;
 	hs ) echo './'$ext'_'$prob ;;
+	clj ) echo 'clj -M ./'$ext'_'$prob.$ext ;;
     esac        
 }
 
