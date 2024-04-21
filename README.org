@@ -76,6 +76,7 @@ The accepted languages for sln script are, for now, the following:
   - d
   - python
   - haskell
+  - clojure
   
 *note:* type the name of language chosen strictly equal as described above.
 
