@@ -34,11 +34,8 @@
                 (printf fmt val))
               (recur i (inc j) line)))))
 
-(defn- read-int []
-  (Integer/parseInt (read-line)))
-
 (loop []
-  (let [n (read-int)]
+  (let [n (read)]
     (when-not (zero? n)
       (prn-mtx n)
       (recur))))
