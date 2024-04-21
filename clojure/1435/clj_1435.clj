@@ -3,7 +3,7 @@
     problem_name: matriz quadrada 1
     problem_number: 1435
     category: iniciante
-    difficulty_level: 5
+    difficulty_level: 2
     link: https://judge.beecrowd.com/pt/problems/view/1435
 "
 (defn- mean [n]
