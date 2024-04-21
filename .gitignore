@@ -2,3 +2,7 @@
 *.o
 *.obj
 *.hi
+*~
+*.nrepl-port
+.clj-kondo/
+.lsp/
